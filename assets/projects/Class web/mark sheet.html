@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mark Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+	background:linear-gradient(to top, rgba(0,0,0,0.75)50%,rgba(0,0,0,0.75)50%),url(CLASS1.jpg);
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background: #333;
+            color: white;
+        }
+		a{
+	color:white;
+	margin:40px;
+	font-style:none;
+	font-size:20px;
+	text-decoration: none;
+	
+}
+nav{
+	background-color:;
+	padding-left:50%;
+	margin-top:50px;
+
+}
+h2{
+   color:white;
+   }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+   <a href="index.html">HOME</a>
+   <a href="ABOUT.html">ABOUT</a>
+   <a href="service.html">SERVICES</a>
+   <a href="contact.html">CONTACT</a>
+    </nav>
+    </header>
+    <h2>Student Mark Sheet</h2>
+    <table id="marksheet">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>TICT1114</th>
+                <th>TICT1123</th>
+                <th>TICT1152</th>
+                <th>TICT1134</th>
+                <th>TICT1142</th>
+                <th>Total</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const students = [];
+        for (let i = 1; i <= 168; i++) {
+            students.push({
+                rollNo: i,
+                name: "2022/ICTS/" + i,
+                TICT1114: Math.floor(Math.random() * 101),
+                TICT1123: Math.floor(Math.random() * 101),
+                TICT1152: Math.floor(Math.random() * 101),
+                TICT1134: Math.floor(Math.random() * 101),
+                TICT1142: Math.floor(Math.random() * 101)
+            });
+        }
+
+        const tbody = document.querySelector("#marksheet tbody");
+
+        students.forEach(student => {
+            let total = student.TICT1114 + student.TICT1123 + student.TICT1152 + student.TICT1134 + student.TICT1142;
+            let percentage = (total / 500) * 100;
+            let row = `<tr>
+                <td>${student.rollNo}</td>
+                <td>${student.name}</td>
+                <td>${student.TICT1114}</td>
+                <td>${student.TICT1123}</td>
+                <td>${student.TICT1152}</td>
+                <td>${student.TICT1134}</td>
+                <td>${student.TICT1142}</td>
+                <td>${total}</td>
+                <td>${percentage.toFixed(2)}%</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    </script>
+</body>
+</html>

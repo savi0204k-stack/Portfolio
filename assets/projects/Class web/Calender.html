@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .calendar-container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+		a{
+	color:white;
+	margin:40px;
+	font-style:none;
+	font-size:20px;
+	text-decoration: none;
+	
+}
+nav{
+	background-color:;
+	padding-left:50%;
+	margin-top:50px;
+
+}
+    </style>
+</head>
+<body>
+<header>
+<nav>
+   <a href="index.html">HOME</a>
+   <a href="ABOUT.html">ABOUT</a>
+   <a href="service.html">SERVICES</a>
+   <a href="contact.html">CONTACT</a>
+    </nav>
+    </header>
+    <div class="calendar-container">
+        <h2>Academic Calendar</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>January 10, 2025</td>
+                <td>Semester Begins</td>
+                <td>First day of classes for the new semester</td>
+            </tr>
+            <tr>
+                <td>March 15, 2025</td>
+                <td>Mid-Term Exams</td>
+                <td>Mid-semester assessments start</td>
+            </tr>
+            <tr>
+                <td>June 10, 2025</td>
+                <td>Final Exams</td>
+                <td>End-of-semester examinations</td>
+            </tr>
+            <tr>
+                <td>June 30, 2025</td>
+                <td>Semester Break</td>
+                <td>Official start of the semester holiday</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>March Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            	background:linear-gradient(to top, rgba(0,0,0,0.75)50%,rgba(0,0,0,0.75)50%),url(CLASS1.jpg);
+            margin: 0;
+            padding: 0;
+        }
+        .calendar-container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            padding: 10px;
+        }
+        .day {
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .marked {
+            background-color: #ffcc00;
+            font-weight: bold;
+        }
+        #event-details {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+		
+    </style>
+</head>
+<body>
+<div class="calendar-container">
+        <h2>March Calendar</h2>
+        <div class="calendar" id="calendar"></div>
+        <p id="event-details">Click on a marked date to see the event.</p>
+    </div>
+    <script>
+        const markedDates = {
+            '2025-03-10': 'Mathematics - Mid-Term Exam',
+            '2025-03-12': 'Physics - Mid-Term Exam',
+            '2025-03-14': 'Chemistry - Mid-Term Exam',
+            '2025-06-05': 'Mathematics - Final Exam',
+            '2025-06-07': 'Physics - Final Exam',
+            '2025-06-09': 'Chemistry - Final Exam'
+        };
+        
+        function generateCalendar(month, year) {
+            const calendar = document.getElementById('calendar');
+            calendar.innerHTML = '';
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                let dateStr = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+                let dayElement = document.createElement('div');
+                dayElement.classList.add('day');
+                dayElement.textContent = day;
+                
+                if (markedDates[dateStr]) {
+                    dayElement.classList.add('marked');
+                    dayElement.title = markedDates[dateStr];
+                    dayElement.onclick = function() {
+                        document.getElementById('event-details').textContent = `Event on ${dateStr}: ${markedDates[dateStr]}`;
+                    };
+                }
+                
+                calendar.appendChild(dayElement);
+            }
+        }
+        
+        generateCalendar(2, 2025); // March 2025
+    </script>
+</body>
+</html>

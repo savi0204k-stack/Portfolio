@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+           	background:linear-gradient(to top, rgba(0,0,0,0.75)50%,rgba(0,0,0,0.75)50%),url(CLASS1.jpg);
+
+        }
+        .result-container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .check-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .result-output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+		a{
+	color:white;
+	margin:40px;
+	font-style:none;
+	font-size:20px;
+	text-decoration: none;
+	
+}
+nav{
+	background-color:;
+	padding-left:50%;
+	margin-top:50px;
+
+}
+    </style>
+</head>
+<body>
+<header>
+<nav>
+   <a href="index.html">HOME</a>
+   <a href="ABOUT.html">ABOUT</a>
+   <a href="service.html">SERVICES</a>
+   <a href="contact.html">CONTACT</a>
+    </nav>
+    </header>
+    <div class="result-container">
+        <h2>Check Your Result</h2>
+        <input type="text" id="studentId" placeholder="Enter Student ID (e.g., 2022/ICTS/01)">
+        <button class="check-btn" onclick="checkResult()">Check Result</button>
+        <p id="resultMessage" class="result-output"></p>
+    </div>
+
+    <script>
+        const results = {};
+        for (let i = 1; i <= 168; i++) {
+            let studentId = `2022/ICTS/${i.toString().padStart(2, '0')}`;
+            let score = Math.floor(Math.random() * 51) + 50; // Generates a random score between 50% and 100%
+            let status = score >= 50 ? "Passed" : "Failed";
+            results[studentId] = `${status} - ${score}%`;
+        }
+
+        function checkResult() {
+            let studentId = document.getElementById("studentId").value;
+            let message = results[studentId] ? `Result: ${results[studentId]}` : "Student ID not found!";
+            document.getElementById("resultMessage").textContent = message;
+        }
+    </script>
+</body>
+</html>

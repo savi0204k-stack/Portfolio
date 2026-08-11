@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+    background:linear-gradient(to top, rgba(0,0,0,0.75)50%,rgba(0,0,0,0.75)50%),url(CLASS1.jpg);
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #333;
+            color: white;
+        }
+        .calculate-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+		a{
+	color:white;
+	margin:40px;
+	font-style:none;
+	font-size:20px;
+	text-decoration: none;
+	
+}
+nav{
+	background-color:;
+	padding-left:50%;
+		margin-top:50px;
+
+}
+h2{color:azure;}
+    </style>
+</head>
+<body>
+ <nav>
+   <a href="index.html">HOME</a>
+   <a href="ABOUT.html">ABOUT</a>
+   <a href="service.html">SERVICES</a>
+   <a href="contact.html">CONTACT</a>
+    </nav>
+    <h2>Attendance Calculation</h2>
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Total Classes</th>
+                <th>Attended Classes</th>
+                <th>Attendance (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <button class="calculate-btn" onclick="calculateAttendance()">Calculate Attendance</button>
+    
+    <script>
+        const students = [];
+        for (let i = 1; i <= 50; i++) {
+            students.push({
+                rollNo: i,
+                name: "Student " + i,
+                totalClasses: 100,
+                attendedClasses: Math.floor(Math.random() * 101)
+            });
+        }
+
+        const tbody = document.querySelector("#attendanceTable tbody");
+
+        students.forEach(student => {
+            let row = `<tr>
+                <td>${student.rollNo}</td>
+                <td>${student.name}</td>
+                <td>${student.totalClasses}</td>
+                <td>${student.attendedClasses}</td>
+                <td class="attendance-percentage">-</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+
+        function calculateAttendance() {
+            const rows = document.querySelectorAll("#attendanceTable tbody tr");
+            rows.forEach(row => {
+                const attended = parseInt(row.cells[3].textContent);
+                const total = parseInt(row.cells[2].textContent);
+                const percentage = ((attended / total) * 100).toFixed(2);
+                row.cells[4].textContent = percentage + "%";
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+    background:linear-gradient(to top, rgba(0,0,0,0.75)50%,rgba(0,0,0,0.75)50%),url(CLASS1.jpg);
+        }
+        .board {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .notice {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .notice:last-child {
+            border-bottom: none;
+        }
+        .add-notice {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+		a{
+	color:white;
+	margin:40px;
+	font-style:none;
+	font-size:20px;
+	text-decoration: none;
+	
+}
+nav{
+	background-color:;
+	padding-left:50%;
+	margin-top:50px;
+
+}
+h2{
+  color:white;
+  }
+  </style>
+</head>
+<body>
+<header>
+<nav>
+   <a href="index.html">HOME</a>
+   <a href="ABOUT.html">ABOUT</a>
+   <a href="service.html">SERVICES</a>
+   <a href="contact.html">CONTACT</a>
+    </nav>
+    </header>
+    <h2>Notice Board</h2>
+    <div class="board" id="noticeBoard">
+        <div class="notice">Welcome to the Notice Board!</div>
+    </div>
+    <div class="add-notice">
+        <input type="text" id="newNotice" placeholder="Enter new notice">
+        <button onclick="addNotice()">Add Notice</button>
+    </div>
+
+    <script>
+        function addNotice() {
+            const noticeText = document.getElementById("newNotice").value;
+            if (noticeText.trim() === "") {
+                alert("Please enter a valid notice.");
+                return;
+            }
+            const noticeBoard = document.getElementById("noticeBoard");
+            const newNotice = document.createElement("div");
+            newNotice.classList.add("notice");
+            newNotice.textContent = noticeText;
+            noticeBoard.appendChild(newNotice);
+            document.getElementById("newNotice").value = "";
+        }
+    </script>
+</body>
+</html>
